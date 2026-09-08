@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 
 namespace Assignment
 {
@@ -11,7 +12,7 @@ namespace Assignment
             // AS02_CountNumber();
             // AS03_CheckValidBrackets();
             // AS04_PrintReverseLinkedList();
-            // AS05_FindMiddleElement();
+             AS05_FindMiddleElement();
             // AS06_MergeDictionaries();
             // AS07_RemoveDuplicatesFromLinkedList();
             // AS08_TopFrequentNumber();
@@ -28,7 +29,27 @@ namespace Assignment
         public void AS01_CountWords()
         {
             string[] words = as01Words;
-            throw new System.NotImplementedException();
+            Dictionary<string, int> wordCount = new Dictionary<string, int>();
+
+            foreach (string word in words) 
+            {
+                if (wordCount.ContainsKey(word))
+                {
+                    wordCount[word] += 1;
+                }
+                else 
+                {
+                    wordCount.Add(word, 1);
+                }
+            }
+
+            foreach (KeyValuePair<string, int> pair in wordCount) 
+            {
+                string key = pair.Key;
+                int value = pair.Value;
+
+                Debug.Log($"word: '{key}' count: {value}");
+            }
         }
 
         [Header("AS02 - Count Number")]
@@ -37,7 +58,27 @@ namespace Assignment
         public void AS02_CountNumber()
         {
             int[] numbers = as02Numbers;
-            throw new System.NotImplementedException();
+            Dictionary<int, int> numberCount = new Dictionary<int, int>();
+
+            foreach (int number in numbers)
+            {
+                if (numberCount.ContainsKey(number))
+                {
+                    numberCount[number] += 1;
+                }
+                else
+                {
+                    numberCount.Add(number, 1);
+                }
+            }
+
+            foreach (KeyValuePair<int, int> pair in numberCount)
+            {
+                int key = pair.Key;
+                int value = pair.Value;
+
+                Debug.Log($"number: {key} count: {value}");
+            }
         }
 
         [Header("AS03 - Check Valid Brackets")]
@@ -46,7 +87,72 @@ namespace Assignment
         public void AS03_CheckValidBrackets()
         {
             string input = as03Input;
-            throw new System.NotImplementedException();
+            string output = "unCheck";
+
+            LinkedList<char> stack = new LinkedList<char>();
+
+            foreach (char c in input)
+            {
+                if (c == '(' || c == '[' || c == '{')
+                {
+                    stack.AddLast(c);
+                }
+                else if (c == ')' || c == ']' || c == '}') 
+                {
+                    if (stack.Count == 0)
+                    {
+                        output = "Invalid";
+                        //Debug.Log("each");
+                        break;
+                    }
+
+                    stack.AddLast(c);
+                }
+            }
+
+
+            while (stack.Count > 0) 
+            {
+                LinkedListNode<char> firstNode = stack.First;
+                LinkedListNode<char> lastNode = stack.Last;
+
+                if (firstNode.Value == '(' && lastNode.Value == ')')
+                {
+                    stack.RemoveLast();
+                    stack.RemoveFirst();
+                    output = "Valid";
+                }
+                else if (firstNode.Value == '[' && lastNode.Value == ']')
+                {
+                    stack.RemoveLast();
+                    stack.RemoveFirst();
+                    output = "Valid";
+                }
+                else if (firstNode.Value == '{' && lastNode.Value == '}')
+                {
+                    stack.RemoveLast();
+                    stack.RemoveFirst();
+                    output = "Valid";
+                }
+                else 
+                {
+                    //Debug.Log(firstNode.Value);
+                    //Debug.Log(lastNode.Value);
+                    output = "Invalid";
+                    break;
+                }
+            }
+
+            if (stack.Count <= 0 && !(output == "Invalid")) 
+            {
+                output = "Valid";
+            }
+
+            Debug.Log(output);
+
+            
+
+
         }
 
         [Header("AS04 - Print Reverse Linked List")]
@@ -55,7 +161,21 @@ namespace Assignment
         public void AS04_PrintReverseLinkedList()
         {
             LinkedList<int> list = as04List.GetLinkedList();
-            throw new System.NotImplementedException();
+
+            if (list.Count == 0)
+            {
+                Debug.Log("List is empty");
+            }
+            else 
+            {
+                var currentNode = list.Last;
+                while (currentNode != null) 
+                {
+                    Debug.Log($"{currentNode.Value}");
+                    currentNode = currentNode.Previous;
+                }
+            }
+
         }
 
         [Header("AS05 - Find Middle Element")]
