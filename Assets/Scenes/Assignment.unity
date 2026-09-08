@@ -394,7 +394,12 @@ MonoBehaviour:
   as04List:
     values: 
   as05List:
-    values: []
+    values:
+    - A
+    - B
+    - C
+    - D
+    - E
   as06FirstDictionary:
     entries: []
   as06SecondDictionary:

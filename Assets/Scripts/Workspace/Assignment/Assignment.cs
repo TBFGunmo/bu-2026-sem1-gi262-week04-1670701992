@@ -184,7 +184,22 @@ namespace Assignment
         public void AS05_FindMiddleElement()
         {
             LinkedList<string> list = as05List.GetLinkedList();
-            throw new System.NotImplementedException();
+            LinkedListNode<string> slow = list.First;
+            LinkedListNode<string> fast = list.First;
+
+            while (slow != null || fast != null) 
+            {
+                slow = slow.Next;
+                fast = fast.Next.Next;
+
+                if (slow == null || fast == null) 
+                {
+                    break;
+                }
+            }
+
+            Debug.Log($"{slow.Value}");
+
         }
 
         [Header("AS06 - Merge Dictionaries")]
