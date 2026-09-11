@@ -400,23 +400,55 @@ MonoBehaviour:
     - C
     - D
     - E
+    - F
+    - G
+    - H
+    - I
+    - J
   as06FirstDictionary:
-    entries: []
+    entries:
+    - key: Apple
+      value: 3
+    - key: Banana
+      value: 7
   as06SecondDictionary:
-    entries: []
+    entries:
+    - key: Banana
+      value: 3
+    - key: Pear
+      value: 2
   as07List:
-    values: 
-  as08Numbers: 
+    values: 0100000004000000010000000100000001000000
+  as08Numbers: 0100000002000000010000000200000003000000
   as09Inventory:
-    entries: []
-  as09ItemName: 
-  as09Quantity: 0
+    entries:
+    - key: sword
+      value: 1
+    - key: potion
+      value: 5
+  as09ItemName: potion
+  as09Quantity: 1
   as10EventQueue:
-    values: []
+    values:
+    - eventType: enemy
+      name: Goblin appeared
+      priority: 0
+    - eventType: powerup
+      name: Health boost found
+      priority: 0
+    - eventType: level
+      name: Reached level 2
+      priority: 0
   as11PlayerStats:
-    entries: []
-  as11StatName: 
-  as11Value: 0
+    entries:
+    - key: HP
+      value: 10
+    - key: Kill
+      value: 2
+    - key: Death
+      value: 1
+  as11StatName: Death
+  as11Value: 2
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
